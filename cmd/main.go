@@ -23,16 +23,13 @@ func main() {
 	repository := dependencies.InitRepository(external)
 
 	// Crear servicios
-	service := dependencies.InitService(repository)
-
-	// Crear Handlers
-	userHandler := handler.NewHandler(service)
+	domains := dependencies.InitService(repository)
 
 	// Crear Gin y las rutas
 	r := gin.Default()
 
-	// Configurar rutas
-	handler.SetupRoutes(r, userHandler)
+	handler := handler.NewHandler(domains.UserService) // Inicializa el handler con el servicio
+	handler.SetupRoutes(r)                             // Configura las rutas usando el handler
 
 	// Definir el puerto (puede ser tomado de una variable de entorno o de config)
 	port := ":8080"
