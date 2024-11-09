@@ -2,15 +2,11 @@
 package handler
 
 import (
-	"core-users/pkg/dependencies"
-
 	"github.com/gin-gonic/gin"
 )
 
 // SetupRoutes configura las rutas de la aplicación
-func SetupRoutes(r *gin.Engine, userService dependencies.Service) {
-	handler := NewHandler(userService)
-
+func (h *Handler) SetupRoutes(r *gin.Engine) {
 	// Rutas relacionadas con los usuarios
-	r.GET("/users", handler.GetAllUsers) // Pasa las funciones sin paréntesis
+	r.GET("/users", h.GetAllUsers) // Pasa las funciones sin paréntesis
 }

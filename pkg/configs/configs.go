@@ -7,7 +7,15 @@ import (
 	"github.com/spf13/viper"
 )
 
-type Config struct{}
+type Config struct {
+	DataBaseMongo DataBase `yaml:"database_mongo"`
+}
+
+type DataBase struct {
+	Name string `yaml:"name"`
+	Host string `yaml:"host"`
+	Port string `yaml:"port"`
+}
 
 // Cargar configuraciones desde el archivo YAML correspondiente
 func LoadConfig() (*Config, error) {

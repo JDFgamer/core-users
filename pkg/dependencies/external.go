@@ -1,15 +1,18 @@
 package dependencies
 
-import "core-users/pkg/configs"
+import (
+	"core-users/pkg/configs"
+	"core-users/pkg/repository/external/database"
 
-type External interface{}
+	"go.mongodb.org/mongo-driver/mongo"
+)
 
-type external struct {
-	config configs.Config
+type External struct {
+	mongo *mongo.Database
 }
 
 func InitExternal(config configs.Config) External {
-	return &external{
-		config: config,
+	return External{
+		mongo: database.NewDatabaseMongo(config.DataBaseMongo),
 	}
 }

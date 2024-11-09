@@ -1,15 +1,13 @@
 package handler
 
 import (
-	"core-users/pkg/dependencies"
+	"core-users/pkg/domain/users"
 )
 
 type Handler struct {
-	service dependencies.Service
+	userService users.Service
 }
 
-func NewHandler(service dependencies.Service) *Handler {
-	return &Handler{
-		service: service,
-	}
+func NewHandler(userService users.Service) *Handler {
+	return &Handler{userService: userService}
 }

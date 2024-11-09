@@ -1,0 +1,4 @@
+database_mongo:
+  name: users
+  host: host_name
+  port: port

@@ -1,0 +1,18 @@
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo_container
+    ports:
+      - "27017:27017"  # Puerto para acceder a MongoDB
+    volumes:
+      - mongo_data:/data/db  # Persistencia de datos
+    networks:
+      - mongo_network
+
+volumes:
+  mongo_data:
+    driver: local
+
+networks:
+  mongo_network:
+    driver: bridge

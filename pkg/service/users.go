@@ -7,5 +7,10 @@ import (
 )
 
 func (h *Handler) GetAllUsers(c *gin.Context) {
-	c.JSON(http.StatusOK, nil)
+	ctx := c.Request.Context()
+	err := h.userService.GetAllUser(ctx)
+	if err != nil {
+		c.JSON(http.StatusBadRequest, err)
+	}
+	c.JSON(http.StatusOK, "hola cami soy un texto")
 }

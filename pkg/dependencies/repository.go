@@ -1,13 +1,15 @@
 package dependencies
 
-type Repository interface{}
+import (
+	"core-users/pkg/repository/users"
+)
 
-type repository struct {
-	ext External
+type Repository struct {
+	userRepo users.Storage
 }
 
 func InitRepository(external External) Repository {
-	return &repository{
-		ext: external,
+	return Repository{
+		userRepo: users.NewStorage(*external.mongo),
 	}
 }
