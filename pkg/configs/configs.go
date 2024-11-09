@@ -27,7 +27,7 @@ func LoadConfig() (*Config, error) {
 
 	// Configuración de Viper
 	viper.SetConfigName(fmt.Sprintf("%s", env)) // El nombre del archivo de configuración cambia según el entorno
-	viper.AddConfigPath("../config")            // Ruta donde buscar el archivo
+	viper.AddConfigPath("./config")             // Ruta donde buscar el archivo
 	viper.SetConfigType("yaml")                 // Tipo de archivo
 
 	if err := viper.ReadInConfig(); err != nil {
